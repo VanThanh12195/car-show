@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function CarCard() {
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-10">
@@ -7,6 +8,7 @@ export default function CarCard() {
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
           Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
         </h5>
+
         <div className="flex items-center mt-2.5 mb-5">
           <svg
             className="w-4 h-4 text-yellow-300 mr-1"
