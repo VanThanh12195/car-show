@@ -1,42 +1,20 @@
+import { NextResponse } from "next/server";
 
-import { NextResponse } from 'next/server'
- 
 export async function GET(request) {
 
-        // get the body of the reques
-  const data = await request.json();
+  const paramsSearch = request.url.split("?")[1];
+
+  const res = await fetch(`https://api.api-ninjas.com/v1/cars?${paramsSearch}`, {
+    headers: {
+      "Content-Type": "application/json",
+      'X-Api-Key': process.env.CAR_API_KEY,
+    },
+  });
+
+  const carList = await res.json();
+
+  // console.log('Car is ' + JSON.stringify(carList));
 
 
-    console.log('Request is ' + data);
-
-    // fetch("/api/carsearch", {
-    //     method: "GET",
-    //     headers: {
-    //       "X-Api-Key": process.env.CAR_API_KEY,
-    //     },
-    //   })
-    //     .then((response) => {
-  
-    //       return response.json();
-    //     })
-    //     .then((data) => {
-  
-    //       console.log('Car data is ' + data);
-  
-    //       console.log(data);
-    //     })
-    //     .catch((error) => {
-    //       console.error("Request failed:", error);
-    //     });
-
-
-//   const res = await fetch(`https://data.mongodb-api.com/product/${id}`, {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'API-Key': process.env.DATA_API_KEY,
-//     },
-//   })
-//   const product = await res.json()
- 
-  return null
+  return NextResponse.json({carList});
 }
