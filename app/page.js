@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import SearchCar from "@/components/SearchCar";
-import CarCard from "@/components/CarCard";
+import CarGrid from "@/components/CarGrid";
 
 export default async function Home() {
   // const model = "corolla";
@@ -30,8 +30,7 @@ export default async function Home() {
       <Hero />
       <SearchCar />
 
-<CarCard/>
-
+      <CarGrid />
     </main>
   );
 }
