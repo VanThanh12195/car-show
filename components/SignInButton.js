@@ -1,6 +1,6 @@
 "use client";
 
-export default async function SignInButton() {
+export default function SignInButton() {
 
   return (
     <button

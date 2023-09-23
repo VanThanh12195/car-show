@@ -1,4 +1,8 @@
+import {CarCardViewMore, CarCardAddtoCart} from "./CarCardButton";
+
 export default function CarCard() {
+
+
   return (
     <div className="w-full bg-slate-300 border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
       <img
@@ -90,12 +94,8 @@ export default function CarCard() {
           <span className="text-3xl font-mediu text-gray-900 dark:text-white">
             $52/day
           </span>
-          <button className="active:scale-95 text-white bg-blue-700 hover:bg-blue-800 hover:opacity-90 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            View More
-          </button>
-          <button className=" active:scale-95 text-white bg-blue-700 hover:bg-blue-800  hover:opacity-90 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Add to cart
-          </button>
+         <CarCardViewMore/>
+         <CarCardAddtoCart/>
         </div>
       </div>
     </div>

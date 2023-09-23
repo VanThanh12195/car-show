@@ -29,7 +29,7 @@ export default function SearchCar() {
     });
   };
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (!formData.make || !formData.model) {
       setNotification("Please enter values for Make and Model");
       setTimeout(() => {
@@ -37,13 +37,23 @@ export default function SearchCar() {
       }, 3000); // Hide notification after 3 seconds
       return; // Return early if either field is empty
     }
+
+    let searchCar = {};
+
     if (formData.fuel === "Fuel" && formData.year === "Year") {
       const { make, model } = formData;
-      console.log({ Make: make, Model: model });
+      searchCar = { make: make, model: model };
     } else {
-      // Perform your search logic for all fields
-      console.log(formData);
+      searchCar = formData;
     }
+
+    // Send data to API route
+    const res = await fetch("http://localhost:3000/api/carsearch", {
+      method: "GET",
+      body: JSON.stringify(searchCar),
+    });
+
+  
   };
 
   return (
