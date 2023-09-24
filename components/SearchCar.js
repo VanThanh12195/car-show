@@ -74,7 +74,7 @@ export default function SearchCar() {
 
   return (
     <div>
-      <div className=" flex xl:flex-row flex-col gap-5 relative z-0 max-w-[1600px] mx-auto">
+      <div className=" flex xl:flex-row flex-col gap-5 relative z-0 max-w-[1600px] mx-auto" id='discover'>
         <div className="bg-white padding-x">
           <h2 className="text-stone-900 text-3xl font-extrabold mb-2">
             Car Catalogue
