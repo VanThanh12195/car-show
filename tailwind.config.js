@@ -7,6 +7,18 @@ module.exports = {
   ],
   mode: "jit",
   theme: {
+    screens: {
+      sm: "500px",
+      smCustom: {'min': '500px', 'max': '600px'},
+
+      md: "979px",
+    
+      lg: "1024px",
+    
+      xl: "1368px",
+    
+      "2xl": "1775px",
+    },
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
@@ -25,10 +37,12 @@ module.exports = {
         grey: "#747A88",
       },
       backgroundImage: {
-        'pattern': "url('/pattern.png')",
-        'hero-bg': "url('/hero-bg.png')"
-      }
+        pattern: "url('/pattern.png')",
+        "hero-bg": "url('/hero-bg.png')",
+      },
     },
   },
   plugins: [],
 };
+
+

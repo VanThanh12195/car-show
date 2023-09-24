@@ -1,13 +1,16 @@
 import Image from "next/image";
 import SignInButton from "./SignInButton";
 import ExploreButton from "./ExploreButton";
+import Link from "next/link";
 
 export default function Hero() {
   return (
     <div>
       <div className="flex xl:flex-row relative z-10 max-w-[1600px] mx-auto pt-3 px-16 pr-6">
-        <Image src="/logo.svg" alt="logo" width={180} height={180} />
-          <SignInButton />
+        <Link href="/">
+          <Image src="/logo.svg" alt="logo" width={180} height={180} />
+        </Link>
+        <SignInButton />
       </div>
       <div className="hero">
         <div className="flex-1 pt-20 padding-x">

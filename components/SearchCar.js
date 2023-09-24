@@ -2,12 +2,10 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-
 import { useState } from "react";
 import axios from "axios";
 
-export default function SearchCar({search}) {
-
+export default function SearchCar() {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -55,27 +53,9 @@ export default function SearchCar({search}) {
     if (formData.fuel != "Fuel") searchCar.fuel = formData.fuel;
     if (formData.year != "Year") searchCar.year = formData.year;
 
-    let searchParams =  new URLSearchParams(searchCar).toString();
+    let searchParams = new URLSearchParams(searchCar).toString();
 
-    search(searchParams);
-
-    // router.push(`${pathname}${searchParams}`);
-
-
-    // try {
-    //   const response = await axios.get("http://localhost:3000/api/carsearch", {
-    //     params: searchCar,
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-
-    //   // Handle response data here
-    //   console.log(response.data);
-    // } catch (error) {
-    //   // Handle errors here
-    //   console.error("Error:", error);
-    // }
+    router.push(`${pathname}?${searchParams}`,{ scroll: false })
   };
 
   return (
