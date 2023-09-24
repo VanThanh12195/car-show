@@ -2,20 +2,33 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function SearchCar() {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const ref = useRef(searchParams);
 
   const [notification, setNotification] = useState(null);
 
   const [formData, setFormData] = useState({
-    make: "",
-    model: "",
-    fuel: "Fuel",
-    year: "Year",
+    make: searchParams?.get("make") || "",
+    model: searchParams?.get("model") || "",
+    fuel: searchParams?.get("fuel") || "Fuel",
+    year: searchParams?.get("year") || "Year",
   });
+
+  if (ref.current && searchParams.size === 0) {
+    ref.current = "";
+    setFormData({
+      make: "",
+      model: "",
+      fuel: "Fuel",
+      year: "Year",
+    });
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +67,9 @@ export default function SearchCar() {
 
     let searchParams = new URLSearchParams(searchCar).toString();
 
-    router.push(`${pathname}?${searchParams}`,{ scroll: false })
+    ref.current = searchParams;
+
+    router.push(`${pathname}?${searchParams}`, { scroll: false });
   };
 
   return (

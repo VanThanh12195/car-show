@@ -2,7 +2,7 @@ export default function LoadingSkeleton() {
   return (
     <div>
       <div className="mt-14 px-24 smCustom:px-10">
-        <div class="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8">
+        <div className="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8">
           <Skeleton />
           <Skeleton />
           <Skeleton />

@@ -7,7 +7,7 @@ import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 export default async function Home({ searchParams }) {
   return (
-    <main className="overflow-hidden">
+    <main>
       <Hero />
       <SearchCar />
       <Suspense key={JSON.stringify(searchParams)} fallback={<LoadingSkeleton/>}>

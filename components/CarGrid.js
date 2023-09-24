@@ -9,7 +9,7 @@ export default async function CarGrid({ searchParams }) {
     : (searchParams1 = new URLSearchParams(searchParams).toString());
 
   const res = await fetch(
-    `https://api.api-ninjas.com/v1/cars?limit=20&${searchParams1}`,
+    `https://api.api-ninjas.com/v1/cars?limit=50&${searchParams1}`,
     {
       headers: {
         "Content-Type": "application/json",
