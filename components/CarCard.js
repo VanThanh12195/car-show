@@ -1,43 +1,65 @@
-import {CarCardViewMore, CarCardAddtoCart} from "./CarCardButton";
+import { CarCardViewMore, CarCardAddtoCart } from "./CarCardButton";
+import Image from "next/image";
 
-export default function CarCard() {
 
+function capitalizeFirstLetterOfEachWord(sentence) {
+  return sentence
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+}
 
+export default function CarCard({ car }) {
   return (
-    <div className="w-full bg-slate-300 border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
-      <img
+    <div className="w-full bg-slate-300 border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-white">
+      <Image
         className="px-8 pt-4 rounded-t-lg"
         src="/car.webp"
         alt="product image"
+        width={400}
+        height={300}
       />
 
       <div className="flex items-center justify-between px-12 pb-5">
-        <div className="flex flex-col gap-1">
-          <img
-            className="rounded-t-lg"
+        <div className="flex flex-col gap-1 items-center">
+          <Image
+            className="rounded-t-lg pb-2"
             src="/steering-wheel.svg"
             alt="product image"
+            width={40}
+            height={40}
+          />
+          <div className="text-xl">{car.transmission === "a" ? "Automatic" : "Manual"}</div>
+        </div>
+
+        <div className="flex flex-col gap-1 items-center">
+          <Image
+            className="rounded-t-lg pb-2"
+            src="/tire.svg"
+            alt="product image"
+            width={40}
+            height={40}
           />
 
-          <div>text</div>
+          <div className="text-xl">{car.drive.toUpperCase()}</div>
         </div>
 
-        <div className="flex flex-col gap-1">
-          <img className="rounded-t-lg" src="/tire.svg" alt="product image" />
+        <div className="flex flex-col gap-1 items-center">
+          <Image
+            className="rounded-t-lg pb-2"
+            src="/gas.svg"
+            alt="product image"
+            width={40}
+            height={40}
+          />
 
-          <div>text</div>
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <img className="rounded-t-lg" src="/gas.svg" alt="product image" />
-
-          <div>text</div>
+          <div className="text-xl">{car["combination_mpg"]}</div>
         </div>
       </div>
 
       <div className="px-5 pb-5">
-        <div className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-          Honda Odyssey
+        <div className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+          {capitalizeFirstLetterOfEachWord(car.make + " " + car.model)}
         </div>
 
         <div className="flex items-center mt-2.5 mb-5">
@@ -94,8 +116,8 @@ export default function CarCard() {
           <span className="text-3xl font-mediu text-gray-900 dark:text-white">
             $52/day
           </span>
-         <CarCardViewMore/>
-         <CarCardAddtoCart/>
+          <CarCardViewMore car={car}/>
+          <CarCardAddtoCart car={car}/>
         </div>
       </div>
     </div>
