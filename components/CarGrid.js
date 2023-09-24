@@ -1,6 +1,5 @@
-import { revalidatePath } from "next/cache";
 import CarCard from "./CarCard";
-import SearchCar from "./SearchCar";
+import { Suspense } from "react";
 
 export default async function CarGrid({ searchParams }) {
   let searchParams1;
@@ -22,17 +21,20 @@ export default async function CarGrid({ searchParams }) {
   const carList = await res.json();
 
   let carCard = carList.map((car) => {
-    return <CarCard car={car} />;
+    return <CarCard key={car.make} car={car} />;
   });
 
   return (
     <div>
       <div className="mt-14 px-24 smCustom:px-10">
-      <div class="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8">{carCard}</div>
-
+        <div class="grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8">
+          {carCard}
+        </div>
       </div>
     </div>
   );
 }
 
-{/* <div class="grid min-[1775px]:grid-cols-4 min-[1368px]:grid-cols-3 min-[979px]:grid-cols-2 grid-cols-1 gap-8">{carCard}</div> */}
+{
+  /* <div class="grid min-[1775px]:grid-cols-4 min-[1368px]:grid-cols-3 min-[979px]:grid-cols-2 grid-cols-1 gap-8">{carCard}</div> */
+}

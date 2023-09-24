@@ -3,7 +3,6 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { useState } from "react";
-import axios from "axios";
 
 export default function SearchCar() {
   const router = useRouter();
